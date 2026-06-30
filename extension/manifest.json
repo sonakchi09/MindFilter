@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "MindFilter",
+  "version": "1.0",
+  "description": "See the mental health impact of your social media feed in real time",
+  
+  "permissions": ["activeTab", "storage"],
+  
+  "host_permissions": [
+    "http://127.0.0.1:5000/*",
+    "https://*.instagram.com/*",
+    "https://*.twitter.com/*",
+    "https://*.x.com/*"
+  ],
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.instagram.com/*",
+        "https://*.twitter.com/*",
+        "https://*.x.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["popup.css"]
+    }
+  ],
+  
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
