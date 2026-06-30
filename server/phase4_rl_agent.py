@@ -170,12 +170,12 @@ class MindFilterRLAgent:
         return {
             "content_type"      : content_type,
             "agent_predicted"   : ACTION_LABELS[action],
-            "user_was_affected" : user_affected,
-            "prediction_correct": prediction_correct,
-            "reward"            : reward,
-            "total_episodes"    : self.total_episodes,
-            "recent_accuracy"   : round(accuracy, 1),
-            "epsilon"           : round(self.epsilon, 3)
+            "user_was_affected" : "yes" if user_affected else "no",
+            "prediction_correct": "yes" if prediction_correct else "no",
+            "reward"            : float(reward),
+            "total_episodes"    : int(self.total_episodes),
+            "recent_accuracy"   : round(float(accuracy), 1),
+            "epsilon"           : round(float(self.epsilon), 3)
         }
     
     def get_risk_profile(self):
